@@ -18,4 +18,17 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
   }
 
   Post generatePost(int index) => Post(name: 'Post $index', liked: index % 2 == 0);
+
+  void like(Post post) {
+    final thisList = state;
+    final updatedList = thisList.map((e) {
+      if (e.name == post.name){
+        return Post(name: post.name, liked: !post.liked);
+      } else {
+        return e;
+      }
+    });
+
+    state = updatedList.toList();
+  }
 }
