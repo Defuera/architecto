@@ -20,16 +20,19 @@ class WidgetOne extends ConsumerWidget {
       );
 }
 
-class _PostListItem extends StatelessWidget {
+class _PostListItem extends ConsumerWidget {
   const _PostListItem({required this.post, this.onTap, Key? key}) : super(key: key);
 
   final Post post;
   final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) => ListTile(
+  Widget build(BuildContext context, WidgetRef ref) => ListTile(
         title: Text(post.name),
-        trailing: post.liked ? const Icon(Icons.favorite) : const Icon(Icons.favorite_border),
+        trailing: IconButton(
+          onPressed: () => ref.read(postsProvider.notifier).like(post),
+          icon: post.liked ? const Icon(Icons.favorite) : const Icon(Icons.favorite_border),
+        ),
         onTap: onTap,
       );
 }
