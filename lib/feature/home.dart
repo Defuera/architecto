@@ -1,5 +1,5 @@
-import 'package:architecto/feature/widget_one.dart';
-import 'package:architecto/feature/widget_two.dart';
+import 'package:architecto/feature/feed_widget.dart';
+import 'package:architecto/feature/post_widget.dart';
 import 'package:architecto/model/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,14 +28,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Expanded(
             child: Container(
               alignment: Alignment.center,
-              child: WidgetOne(onPostSelected: (post) => setState(() => selectedPost = post)),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 32.0),
+                child: FeedWidget(onPostSelected: (post) => setState(() => selectedPost = post)),
+              ),
               color: Colors.blue.withOpacity(0.5),
             ),
           ),
           Expanded(
             child: Container(
               alignment: Alignment.center,
-              child: selectedPost == null ? const CircularProgressIndicator() : WidgetTwo(postId: selectedPost!.name),
+              child: selectedPost == null ? const CircularProgressIndicator() : PostWidget(postId: selectedPost!.name),
               color: Colors.red.withOpacity(0.1),
             ),
           ),

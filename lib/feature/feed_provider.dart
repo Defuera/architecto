@@ -10,19 +10,13 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
 
   Future<void> _init() async {
     await Future.delayed(const Duration(seconds: 1));
-    state = List<Post>.generate(3, generatePost);
+    state = _generatePosts(3);
   }
-
-  void click() {
-    state = List<Post>.generate(3, generatePost);
-  }
-
-  Post generatePost(int index) => Post(name: 'Post $index', liked: index % 2 == 0);
 
   void like(Post post) {
     final thisList = state;
     final updatedList = thisList.map((e) {
-      if (e.name == post.name){
+      if (e.name == post.name) {
         return Post(name: post.name, liked: !post.liked);
       } else {
         return e;
@@ -31,4 +25,18 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
 
     state = updatedList.toList();
   }
+
+  void loadMore() {
+    final List<Post> newPosts = _generatePosts(3, (index) => _generatePost(index + state.length));
+    final List<Post> currentPosts = List.from(state);
+
+    currentPosts.addAll(newPosts);
+    state = currentPosts;
+    // state = [Post(name: 'blablabla', liked: false)];
+  }
 }
+
+List<Post> _generatePosts(int count, [Post Function(int) generator = _generatePost]) =>
+    List<Post>.generate(count, generator);
+
+Post _generatePost(int index) => Post(name: 'Post $index', liked: index % 2 == 0);

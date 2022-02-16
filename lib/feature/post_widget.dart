@@ -2,8 +2,8 @@ import 'package:architecto/feature/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WidgetTwo extends ConsumerWidget {
-  const WidgetTwo({required this.postId, Key? key}) : super(key: key);
+class PostWidget extends ConsumerWidget {
+  const PostWidget({required this.postId, Key? key}) : super(key: key);
 
   final String postId;
 
