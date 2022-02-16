@@ -9,7 +9,7 @@ class WidgetTwo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(postProvider);
+    final state = ref.watch(postProvider(postId));
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -20,7 +20,7 @@ class WidgetTwo extends ConsumerWidget {
           iconSize: 96,
           onPressed: () {
             print('like ${state.name}');
-            ref.watch(postProvider.notifier).like();
+            ref.read(postProvider(postId).notifier).like();
           },
           icon: state.liked ? const Icon(Icons.favorite) : const Icon(Icons.favorite_border),
         ),

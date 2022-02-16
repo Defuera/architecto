@@ -2,12 +2,12 @@ import 'package:architecto/feature/posts_provider.dart';
 import 'package:architecto/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final postProvider = StateNotifierProvider<PostNotifier, Post>((ref) => PostNotifier(ref));
+final postProvider = StateNotifierProvider.family<PostNotifier, Post, String>((ref, id) => PostNotifier(ref, id));
 
 class PostNotifier extends StateNotifier<Post> {
-  PostNotifier(this.ref)
-      : post = ref.watch(postsProvider).first,
-        super(ref.watch(postsProvider).first);
+  PostNotifier(this.ref, String id)
+      : post = ref.watch(postsProvider).firstWhere((element) => element.name == id),
+        super(ref.watch(postsProvider).firstWhere((element) => element.name == id));
 
   final StateNotifierProviderRef ref;
   final Post post;
