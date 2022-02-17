@@ -28,11 +28,7 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
 
   void loadMore() {
     final List<Post> newPosts = _generatePosts(3, (index) => _generatePost(index + state.length));
-    final List<Post> currentPosts = List.from(state);
-
-    currentPosts.addAll(newPosts);
-    state = currentPosts;
-    // state = [Post(name: 'blablabla', liked: false)];
+    state = state + newPosts;
   }
 }
 
