@@ -1,4 +1,4 @@
-import 'package:architecto/model/post.dart';
+import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final postsProvider = StateNotifierProvider<TestPostsNotifier, List<Post>>((ref) => TestPostsNotifier());
@@ -28,6 +28,9 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
 
   void loadMore() {
     final List<Post> newPosts = _generatePosts(3, (index) => _generatePost(index + state.length));
+
+    // final currentPosts = state;
+    // currentPosts.addAll(newPosts);
     state = state + newPosts;
   }
 }

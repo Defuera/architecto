@@ -1,6 +1,6 @@
-import 'package:architecto/feature/feed_provider.dart';
-import 'package:architecto/model/post.dart';
+import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/feature/feed_provider.dart';
 
 final postProvider = StateNotifierProvider.autoDispose.family<PostNotifier, Post, String>((ref, id) => PostNotifier(ref, id));
 

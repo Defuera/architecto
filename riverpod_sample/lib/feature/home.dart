@@ -1,21 +1,21 @@
-import 'package:architecto/feature/feed_widget.dart';
-import 'package:architecto/feature/post_widget.dart';
-import 'package:architecto/model/post.dart';
+import 'package:base/model/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/feature/feed_widget.dart';
+import 'package:riverpod_sample/feature/post_widget.dart';
 
 /// widget one displays list of posts
 /// when post is clicked widgetTwo displays detailed view
 /// when post is liked on one for two views, the other one must be updated
 
-class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class RiverpodSample extends ConsumerStatefulWidget {
+  const RiverpodSample({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<RiverpodSample> {
   Post? selectedPost;
 
   @override
