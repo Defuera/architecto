@@ -14,3 +14,22 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## What usecases this sample covers
+
+### Atchitecture
+- List view with items
+- Detailed view of the item
+- Item can be liked and this state is propagated among all screens
+
+
+### Navigation
+
+
+### 
+- UI Events. Based on business logic execute one time ui event, like showing a dialog or navigating
+  - ~~BlocListener~~ 
+  - EventBus?
+  - How to do it in provider
+ 
