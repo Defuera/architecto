@@ -25,33 +25,30 @@ class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const RiverpodSample()),
-                );
-              },
-              child: const Text('Riverpod sample'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const RiverpodSample()),
-                );
-              },
-              child: const Text('Bloc sample'),
-            ),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push<void>(
+                    MaterialPageRoute(builder: (context) => const RiverpodSample()),
+                  );
+                },
+                child: const Text('Riverpod sample'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push<void>(
+                    MaterialPageRoute(builder: (context) => const RiverpodSample()),
+                  );
+                },
+                child: const Text('Bloc sample'),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

@@ -9,7 +9,7 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
   }
 
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future<void>.delayed(const Duration(seconds: 1));
     state = _generatePosts(3);
   }
 
@@ -17,8 +17,10 @@ class TestPostsNotifier extends StateNotifier<List<Post>> {
     final thisList = state;
     final updatedList = thisList.map((e) {
       if (e.name == post.name) {
+
         return Post(name: post.name, liked: !post.liked);
       } else {
+
         return e;
       }
     });

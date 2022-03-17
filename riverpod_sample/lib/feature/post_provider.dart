@@ -2,7 +2,7 @@ import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/feature/feed_provider.dart';
 
-final postProvider = StateNotifierProvider.autoDispose.family<PostNotifier, Post, String>((ref, id) => PostNotifier(ref, id));
+final postProvider = StateNotifierProvider.autoDispose.family<PostNotifier, Post, String>(PostNotifier.new);
 
 class PostNotifier extends StateNotifier<Post> {
   PostNotifier(this.ref, String id)
