@@ -32,19 +32,16 @@ class MainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push<void>(
-                    MaterialPageRoute(builder: (context) => const RiverpodSample()),
-                  );
-                },
+                onPressed: () => Navigator.of(context).push<void>(
+                  MaterialPageRoute(builder: (context) => const RiverpodSample()),
+                ),
                 child: const Text('Riverpod sample'),
               ),
+              const SizedBox(height: 12),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push<void>(
-                    MaterialPageRoute(builder: (context) => const RiverpodSample()),
-                  );
-                },
+                onPressed: () => Navigator.of(context).push<void>(
+                  MaterialPageRoute(builder: (context) => const RiverpodSample()),
+                ),
                 child: const Text('Bloc sample'),
               ),
             ],

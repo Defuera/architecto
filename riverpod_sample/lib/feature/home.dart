@@ -19,8 +19,7 @@ class _HomeScreenState extends ConsumerState<RiverpodSample> {
   Post? selectedPost;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -45,5 +44,4 @@ class _HomeScreenState extends ConsumerState<RiverpodSample> {
         ],
       ),
     );
-  }
 }

@@ -25,6 +25,10 @@ dependencies:
   # navigation
   go_router: ^3.0.1
 
+  # utils
+  assorted_layout_widgets: 5.6.1
+  gap: 2.0.0
+
   riverpod_sample:
     path: ./riverpod_sample
 
