@@ -1,15 +1,14 @@
 import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final postsProvider = StateNotifierProvider<PostsNotifier, AsyncValue<List<Post>>>((ref) => PostsNotifier());
+final postsProvider = StateNotifierProvider<PostsController, AsyncValue<List<Post>>>((ref) => PostsController());
 
-class PostsNotifier extends StateNotifier<AsyncValue<List<Post>>> {
-  PostsNotifier() : super(const AsyncValue.loading()) {
+class PostsController extends StateNotifier<AsyncValue<List<Post>>> {
+  PostsController() : super(const AsyncValue.loading()) {
     _init();
   }
 
   Future<void> _init() async {
-    // await Future<void>.delayed(const Duration(seconds: 1));
     state = AsyncValue.data(_generatePosts(3));
     print('_init $state');
   }
