@@ -20,7 +20,7 @@ all: clean deps intl gen
 
 # run on macos
 run/bloc:
-	flutter run --dart-define="flavor=bloc"  -d macos
+	flutter run --dart-define="flavor=bloc" -d macos
 
 run/riverpod:
-	flutter run --dart-define="flavor=riverpod"  -d macos
+	flutter run --dart-define="flavor=riverpod" -d macos
