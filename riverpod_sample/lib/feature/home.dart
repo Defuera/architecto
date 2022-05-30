@@ -1,8 +1,8 @@
 import 'package:base/model/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/feature/feed_widget.dart';
-import 'package:riverpod_sample/feature/post_widget.dart';
+import 'package:riverpod_sample/feature/feed/feed_widget.dart';
+import 'package:riverpod_sample/feature/post_detailed/post_widget.dart';
 
 /// widget one displays list of posts
 /// when post is clicked widgetTwo displays detailed view

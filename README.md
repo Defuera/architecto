@@ -1,19 +1,15 @@
 # architecto
 
-Architecture playground
+Architecture example for a complex, yet trivial application. The task is to display two screens list and detailed and to organise a shared data flow. 
+Sample implemented for
+- BLoC ((pub.dev)[https://pub.dev/packages/bloc], (docs)[https://bloclibrary.dev/#/]) 
+- Riverpod ((pub.dev)[https://pub.dev/packages/riverpod), (docs)[https://riverpod.dev/]).
 
-## Getting Started
+Another tools explored in this example:
+- Freezed in Bloc
+- AsyncValue in Riverpod
+- Retrofit in Bloc
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
 ## What usecases this sample covers
@@ -25,6 +21,8 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ### Navigation
+- go_router 
+- Autorouter
 
 
 ### 
@@ -32,4 +30,12 @@ samples, guidance on mobile development, and a full API reference.
   - ~~BlocListener~~ 
   - EventBus?
   - How to do it in provider
- 
+
+### What else this project covers?
+- Working with storybook
+- Implementation of Theaming with Light and Dark modes with simple switcher
+-
+
+
+### Package structure 
+

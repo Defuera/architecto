@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/feature/post_provider.dart';
+import 'package:riverpod_sample/feature/post_detailed/post_provider.dart';
 
 class PostWidget extends ConsumerWidget {
   const PostWidget({required this.postId, Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:base/model/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/feature/feed_provider.dart';
+import 'package:riverpod_sample/feature/feed/feed_provider.dart';
 
 class FeedWidget extends ConsumerWidget {
   const FeedWidget({required this.onPostSelected, Key? key}) : super(key: key);
