@@ -17,38 +17,41 @@ class FeedScreen extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: state.when(
-          error: (error, st) => AppErrorWidget(
-            errorMessage: error.toString(),
-            onRetry: controller.retry,
-          ),
-          loading: AppLoaderWidget.new,
-          data: (posts) => posts == null || posts.isEmpty
-              ? AppEmptyWidget(
-                  title: 'No posts yet',
-                  onRetry: controller.retry,
-                )
-              : Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: posts.length,
-                        itemBuilder: (context, index) => PostListItem(
-                          post: posts[index],
-                          onTap: () => controller.onPostClicked(posts[index]),
-                          onLike: () => controller.like(posts[index]),
+        child: RefreshIndicator(
+          onRefresh: controller.retry,
+          child: state.when(
+            error: (error, st) => AppErrorWidget(
+              errorMessage: error.toString(),
+              onRetry: controller.retry,
+            ),
+            loading: AppLoaderWidget.new,
+            data: (posts) => posts == null || posts.isEmpty
+                ? AppEmptyWidget(
+                    title: 'No posts yet',
+                    onRetry: controller.retry,
+                  )
+                : Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: posts.length,
+                          itemBuilder: (context, index) => PostListItem(
+                            post: posts[index],
+                            onTap: () => controller.onPostClicked(posts[index]),
+                            onLike: () => controller.like(posts[index]),
+                          ),
                         ),
                       ),
-                    ),
-                    ElevatedButton(
-                      onPressed: controller.onLoadMoreClicked,
-                      child: const Text('Load more'),
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(54),
-                      ),
-                    )
-                  ],
-                ),
+                      ElevatedButton(
+                        onPressed: controller.onLoadMoreClicked,
+                        child: const Text('Load more'),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(54),
+                        ),
+                      )
+                    ],
+                  ),
+          ),
         ),
       ),
     );
