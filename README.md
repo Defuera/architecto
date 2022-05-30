@@ -11,6 +11,30 @@ Another tools explored in this example:
 - Retrofit in Bloc
 
 
+### Building
+make all
+
+### Running on MacOS
+#### Run from terminal:
+```
+make run/bloc # run bloc sample
+make run/riverpod # run riverpod sample
+```
+
+#### Run Android Studio:
+1. Setup additional run arguments in Run configuration
+```
+--dart-define="flavor=bloc"
+```
+or
+```
+--dart-define="flavor=riverpod"
+```
+2. Run 
+
+
+
+
 
 ## What usecases this sample covers
 
