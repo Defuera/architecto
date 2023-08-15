@@ -1,12 +1,23 @@
 import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/services/post_repository.dart';
 
-final postsProvider = StateNotifierProvider<PostsController, AsyncValue<List<Post>?>>((ref) => PostsController());
+final postsControllerProvider = StateNotifierProvider<PostsController, AsyncValue<List<Post>?>>(
+  (ref) {
+    final posts = ref.watch(postsRepositoryProvider);
+    return PostsController(ref, posts);
+  },
+);
 
 class PostsController extends StateNotifier<AsyncValue<List<Post>?>> {
-  PostsController() : super(const AsyncValue.loading()) {
+  PostsController(Ref ref, List<Post> posts)
+      : repository = ref.read(postsRepositoryProvider.notifier),
+        super(const AsyncValue.loading()) {
     _init();
   }
+
+  final List<Post> posts;
+  final PostsRepository repository;
 
   Future<void> _init() async {
     await Future<void>.delayed(const Duration(seconds: 2));
@@ -18,7 +29,6 @@ class PostsController extends StateNotifier<AsyncValue<List<Post>?>> {
     await Future<void>.delayed(const Duration(seconds: 1));
     state = AsyncValue.data(_generatePosts(3));
   }
-
 
   void like(Post post) {
     final posts = state.value!;

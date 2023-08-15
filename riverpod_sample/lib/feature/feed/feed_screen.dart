@@ -2,14 +2,15 @@ import 'package:base/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/feature/feed/posts_provider.dart';
+import 'package:riverpod_sample/feature/post_detailed/post_detailed_screen.dart';
 
 class FeedScreen extends ConsumerWidget {
   const FeedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(postsProvider);
-    final controller = ref.read(postsProvider.notifier);
+    final state = ref.watch(postsControllerProvider);
+    final controller = ref.read(postsControllerProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +38,11 @@ class FeedScreen extends ConsumerWidget {
                           itemCount: posts.length,
                           itemBuilder: (context, index) => PostListItem(
                             post: posts[index],
-                            onTap: () => controller.onPostClicked(posts[index]),
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => PostDetailedScreen(postId: posts[index].name),
+                              ),
+                            ),
                             onLike: () => controller.like(posts[index]),
                           ),
                         ),

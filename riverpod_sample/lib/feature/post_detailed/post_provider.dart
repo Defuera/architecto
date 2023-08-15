@@ -1,18 +1,29 @@
 import 'package:base/model/post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/feature/feed/posts_provider.dart';
+import 'package:riverpod_sample/services/post_repository.dart';
 
-final postProvider = StateNotifierProvider.autoDispose.family<PostNotifier, Post, String>(PostNotifier.new);
+final postDetailedControllerProvider = StateNotifierProvider.autoDispose.family<PostDetailedController, Post, String>(
+  (ref, id) {
+    final posts = ref.watch(postsRepositoryProvider);
 
-class PostNotifier extends StateNotifier<Post> {
-  PostNotifier(this.ref, String id)
-      : post = ref.watch(postsProvider).value!.firstWhere((element) => element.name == id),
-        super(ref.watch(postsProvider).value!.firstWhere((element) => element.name == id));
+    return PostDetailedController(ref, id);
+  },
+);
+
+class PostDetailedController extends StateNotifier<Post> {
+  PostDetailedController(this.ref, String id)
+      : post = ref.watch(postsRepositoryProvider).value!.firstWhere((element) => element.name == id),
+        super(ref.watch(postsControllerProvider).value!.firstWhere((element) => element.name == id));
 
   final AutoDisposeStateNotifierProviderRef ref;
   final Post post;
 
   void like() {
-    ref.read(postsProvider.notifier).like(post);
+    ref.read(postsControllerProvider.notifier).like(post);
+  }
+
+  void onLikePressed() {
+    //todo
   }
 }
